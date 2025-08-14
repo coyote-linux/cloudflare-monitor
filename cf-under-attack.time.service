@@ -1,0 +1,14 @@
+[Unit]
+Description=Cloudflare Under Attack Monitor (oneshot via timer, Python)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/env python3 /opt/cloudflare-monitor/cf_under_attack.py
+NoNewPrivileges=true
+ProtectSystem=full
+ProtectHome=true
+PrivateTmp=true
+CapabilityBoundingSet=
+SystemCallFilter=@system-service

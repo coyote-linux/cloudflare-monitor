@@ -1,0 +1,19 @@
+[Unit]
+Description=Cloudflare Auto Under Attack Mode Monitor (Python)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+ExecStart=/usr/bin/env python3 /opt/cloudflare-monitor/cf_under_attack.py
+Restart=always
+RestartSec=60
+User=root
+NoNewPrivileges=true
+ProtectSystem=full
+ProtectHome=true
+PrivateTmp=true
+CapabilityBoundingSet=
+SystemCallFilter=@system-service
+
+[Install]
+WantedBy=multi-user.target
